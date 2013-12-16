@@ -1,0 +1,29 @@
+<html ng-app='test'>
+<title>
+FB Login Check
+</title>
+<head>
+	<script src="angular.js"></script>
+<script>
+	var test=angular.module('test',[]).config(['$httpProvider',function($httpProvider) {
+		$httpProvider.defaults.useXDomain=true;
+		delete $httpProvider.defaults.headers.common['X-Requested-With'];
+		$httpProvider.defaults.cache = true;
+	}]);
+
+	function SimpleController($scope, $http){
+		$scope.call = function(){
+			$http({url:'http://localhost:3000/api/v1/auth/facebook', method: 'GET'}).success(function(){
+				console.log("called");
+			})
+		}
+	}	
+</script>
+</head>>
+<body ng-controller="SimpleController">
+ <button ng-click="call()">
+
+ Login with Facebook
+ </button>
+</body>
+</html>
