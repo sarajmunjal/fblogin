@@ -49,7 +49,7 @@ module.exports = function(app) {
          return done(err, user)
          })
          }
-         else {	
+         else { 
          return done(err, user)
          }
          })

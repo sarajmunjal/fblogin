@@ -49,12 +49,9 @@ module.exports = function(app) {
 
 
 	(function authentication_routes() {
-		//var AuthCtrl = require('../controllers/auth');
+		var AuthCtrl = require('../controllers/auth');
 //		var MailerCtrl = require('../controllers/mailer');
-		app.get('/api/v1/auth/facebook', passport.authenticate('facebook', {
-      scope: [ 'email', 'user_about_me'],
-      failureRedirect: '/login'
-    }), function(req,res) {});
+		app.get('/api/v1/auth/facebook',AuthCtrl.FBLogin, function(req,res) {});
 
         app.get('/api/v1/auth/facebook/callback',
          passport.authenticate('facebook', { failureRedirect: '/login' }),
